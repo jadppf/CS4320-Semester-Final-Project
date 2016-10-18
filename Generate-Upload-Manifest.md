@@ -1,6 +1,6 @@
 # Generate or Upload Manifest Requirements Analysis
 
-## (Recommended) Use Cases
+## Use Cases
 The Generate or Upload Manifest use case is dependent on the Upload Data Set use case. This will fulfill the pre-condition that a primary actor has shared data and any SNC files with the system. 
 
 ## Functional Requirments 
@@ -17,5 +17,5 @@ The system will be required to have access to a database system for storing mani
 
 -------------
 #### Primary Author: Jakob Daugherty
-#### Secondary Reviewer: 
+#### Secondary Reviewer: Scott Wolcott
 #### Group: 6
