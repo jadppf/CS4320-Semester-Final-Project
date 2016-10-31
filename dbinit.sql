@@ -3,14 +3,16 @@
    SO DON'T DO IT IF YOU DON'T WANT TO WHIPE THE DB!!!
 */
 
-/* replace 'sdw3mdTestDb' with real db name after file is complete 
+/* this file does not specify a DB to use. You must pipe it in with the mysql command like this
+     mysql -u <username> -p <DBName> < dbinit.sql 
 */
-DROP SCHEMA IF EXISTS sdw3mdTestDB CASCADE; 
-CREATE SCHEMA sdw3mdTestDB;
 
-SET search_path = sdw3mdTestDB, public;
 
-USE sdw3mdTestDB;
+
+DROP TABLE IF EXISTS user_info;
+DROP TABLE IF EXISTS manifest;
+DROP TABLE IF EXISTS m_x_snc;
+DROP TABLE IF EXISTS person;
 
 CREATE TABLE person (
     PID int NOT NULL AUTO_INCREMENT,
@@ -48,6 +50,8 @@ CREATE TABLE manifest (
     FOREIGN KEY (Creator) REFERENCES person(PID)
 );
 
+DROP TABLE IF EXISTS snc;
+
 CREATE TABLE snc (
     FID int NOT NULL AUTO_INCREMENT,
     Creator int,
@@ -60,6 +64,7 @@ CREATE TABLE m_x_snc (
     Creator int NOT NULL,
     MID int NOT NULL,
     FID int NOT NULL,
+    DateCreated datetime,
     FOREIGN KEY (Creator) REFERENCES person(PID),
     FOREIGN KEY (MID) REFERENCES manifest(MID),
     FOREIGN KEY (FID) REFERENCES snc(FID)
