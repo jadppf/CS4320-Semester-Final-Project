@@ -10,6 +10,8 @@ CREATE SCHEMA sdw3mdTestDB;
 
 SET search_path = sdw3mdTestDB, public;
 
+USE sdw3mdTestDB;
+
 CREATE TABLE person (
     PID int NOT NULL AUTO_INCREMENT,
     LastName varchar(255) NOT NULL,
@@ -50,7 +52,8 @@ CREATE TABLE snc (
     FID int NOT NULL AUTO_INCREMENT,
     Creator int,
     DateCreated datetime NOT NULL,
-    FileName varchar(255)
+    FileName varchar(255),
+    PRIMARY KEY (FID)
 );
 
 CREATE TABLE m_x_snc (
