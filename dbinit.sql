@@ -7,11 +7,13 @@
      mysql -u <username> -p <DBName> < dbinit.sql 
 */
 
-
-
+/* drop tables for clean slate. Order is important because it will complain about 
+   foreign key constraints if you try to drop them in the wrong order
+*/
+DROP TABLE IF EXISTS m_x_snc;
 DROP TABLE IF EXISTS user_info;
 DROP TABLE IF EXISTS manifest;
-DROP TABLE IF EXISTS m_x_snc;
+DROP TABLE IF EXISTS snc;
 DROP TABLE IF EXISTS person;
 
 CREATE TABLE person (
@@ -50,14 +52,13 @@ CREATE TABLE manifest (
     FOREIGN KEY (Creator) REFERENCES person(PID)
 );
 
-DROP TABLE IF EXISTS snc;
-
 CREATE TABLE snc (
     FID int NOT NULL AUTO_INCREMENT,
     Creator int,
     DateCreated datetime NOT NULL,
     FileName varchar(255),
-    PRIMARY KEY (FID)
+    PRIMARY KEY (FID),
+    FOREIGN KEY (Creator) REFERENCES person(PID)
 );
 
 CREATE TABLE m_x_snc (
