@@ -15,4 +15,11 @@ function data_page($dbc, $id) {
 }
 
 
+function data_userinfo($dbc) {
+	$query = "SELECT * From user_info";
+	$result = mysqli_query($dbc, $query);
+	$data = mysqli_fetch_assoc($result);
+	return $data;	
+}
+
 ?>

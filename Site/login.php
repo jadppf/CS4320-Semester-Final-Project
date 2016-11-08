@@ -11,14 +11,16 @@ if($_POST) {
 
 	if(mysqli_num_rows($result) == 1) {
 		$data=mysqli_fetch_assoc($result);
-		$_SESSION['username'] = $_POST['email'];
-		if($data['Category'] == 0 ) {
-			header('Location:admin/index.php');
-		} else {
-			header('Location: index.php');
-		}
-		
-		
+		if($data['isActive'] == 1) {
+			$_SESSION['username'] = $_POST['email'];
+			if($data['Category'] == 0 ) {
+				$_SESSION['category'] = 'admin';
+				header('Location:admin/index.php');
+			} else {
+				$_SESSION['category'] = 'other';
+				header('Location: index.php');
+			}
+		}		
 	}
 }
 ?>
@@ -26,7 +28,7 @@ if($_POST) {
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Admin Login</title>
+		<title>Login</title>
 		<meta name="viewport" content="width=device-width,initial-scale=1.0">
 		<?php include('config/css.php'); ?>
 		<?php include('config/js.php'); ?>		
@@ -69,6 +71,7 @@ if($_POST) {
 					</div> <!--END panel-->
 				</div><!--END col-->
 			</div><!--END row-->
+			
 
 	
 		</div>

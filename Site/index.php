@@ -1,7 +1,7 @@
 <?php
 #Start the session
 session_start();
-if(!isset($_SESSION['username'])) {
+if(!isset($_SESSION['username']) or $_SESSION['category'] !='other') {
 	header('Location: login.php');
 }
 
@@ -22,10 +22,14 @@ if(!isset($_SESSION['username'])) {
 	</head>
 	<body>
 		<?php include(D_TEMPLATE.'/navigation.php'); ?>
+		
 
 		<div class="container">
+			<!--
 			<h1><?php  echo $page['header']; ?></h1>
 			<?php echo $page['body_formatted']; ?>
+			-->
+			<h1>This is the page for Normal User</h1>
 			
 		</div>
 		

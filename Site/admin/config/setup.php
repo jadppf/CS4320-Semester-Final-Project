@@ -9,8 +9,8 @@ define('D_TEMPLATE', 'template');
 $site_title = 'FinalProject';
 
 # Functions:
-include('functions/data.php');
-include('functions/template.php');
+//include('functions/data.php');
+//include('functions/template.php');
 
 if(isset($_GET['page'])) {
 	$pageid = $_GET['page'];
@@ -19,7 +19,7 @@ if(isset($_GET['page'])) {
 }
 
 # Page Setup
-$page = data_page($dbc,$pageid);
+//$page = data_page($dbc,$pageid);
 
 
 ?>

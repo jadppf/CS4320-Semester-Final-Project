@@ -1,8 +1,8 @@
 <?php
 #Start the session
 session_start();
-if(!isset($_SESSION['username'])) {
-	header('Location: login.php');
+if(!isset($_SESSION['username']) or $_SESSION['category'] != 'admin') {
+	header('Location: ../login.php');
 }
 
 ?>
@@ -16,10 +16,7 @@ if(!isset($_SESSION['username'])) {
 		<meta name="viewport" content="width=device-width,initial-scale=1.0">
 		<?php include('config/css.php'); ?>
 		<?php include('config/js.php'); ?>
-		
-
-
-		
+				
 	</head>
 	<body>
 		<?php include(D_TEMPLATE.'/navigation.php'); ?>
