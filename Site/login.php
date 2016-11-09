@@ -13,7 +13,7 @@ if($_POST) {
 		$data=mysqli_fetch_assoc($result);
 		if($data['isActive'] == 1) {
 			$_SESSION['username'] = $_POST['email'];
-			if($data['Category'] == 0 ) {
+			if($data['Category'] == 'admin' ) {
 				$_SESSION['category'] = 'admin';
 				header('Location:admin/index.php');
 			} else {

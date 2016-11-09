@@ -61,6 +61,24 @@ if(!isset($_SESSION['username']) or $_SESSION['category'] != 'admin') {
 			
 			<div class="row">
 				<div class="col-md-4">
+					<?php
+						if($_POST["submitted"] == 1) {
+							if(isset($_POST['isactive']) && $_POST['isactive'] == 1) {
+								$isactive = 1;
+							}else {
+								$isactive = 0;
+							}							
+							$query = "INSERT INTO user_info(UserName, AccountEmail, Hashword, isActive, Category) VALUES ('$_POST[username]', '$_POST[email]', '$_POST[password]', $isactive,'$_POST[category]')";
+							$result = mysqli_query($dbc, $query);
+							if($result) {
+								echo '<p>User was added!</p>';
+							} else {
+								echo '<p>Failed to add a new user:'.mysqli_error($dbc).'</p>';
+								echo '<p>'.$query.'</p>';
+							}
+							header('Location: user.php');
+						}
+					?>
 					<div class="panel panel-info">
 						<div class="panel-heading">
 							<h1>Create New User</h1>
@@ -81,19 +99,20 @@ if(!isset($_SESSION['username']) or $_SESSION['category'] != 'admin') {
 								</div>
 								<div class="form-group">
 									<label for="Category">Category</label>
-									  <select class="form-control" id="Category">
-									    <option>Admin</option>
-									    <option>Other</option>
+									  <select class="form-control" id="Category" name="category">
+									    <option>admin</option>
+									    <option>other</option>
 									    <option>3</option>
 									    <option>4</option>
 									  </select>
 								</div>								
 								<div class="checkbox">
 									<label>
-										<input type="checkbox"> Is active?
+										<input type="checkbox" name="isactive" value="1"> Is active?
 									</label>
 								</div>
 								<button type="submit" class="btn btn-default">Submit</button>
+								<input type="hidden" name="submitted" value="1">
 							</form>
 						</div><!--END panel body-->
 					</div> <!--END panel-->
