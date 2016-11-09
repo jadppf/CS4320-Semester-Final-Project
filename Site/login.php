@@ -34,6 +34,8 @@ if($_POST) {
 		<?php include('config/js.php'); ?>		
 	</head>
 	<body>
+		<div id="wapper">
+			
 		<?php //include(D_TEMPLATE.'/navigation.php'); ?>
 		<div class="container">
 			<div class="row">
@@ -77,6 +79,6 @@ if($_POST) {
 		</div>
 	
 		<?php //include(D_TEMPLATE.'/footer.php'); ?>
-
+		</div>
 	</body>
 </html>

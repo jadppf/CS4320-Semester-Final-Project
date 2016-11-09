@@ -13,3 +13,21 @@
 <!--FontAwesome-->
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <!-- JQuery -->
+
+<style>
+
+#wrap {
+	height:auto;
+	min-height: 100%;
+	margin:0 auto -60px;
+	padding: 0 0 60px;
+}
+
+footer {
+
+  text-align: center;
+  height: 60px;
+}
+
+}
+</style>

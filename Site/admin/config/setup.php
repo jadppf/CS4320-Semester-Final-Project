@@ -1,10 +1,10 @@
 <?php
-//setpu file:
-#Database Connection:
-include('../config/connection.php');
 # Constants:
 define('D_TEMPLATE', 'template');
 
+//setpu file:
+#Database Connection:
+include('config/connection.php');
 
 $site_title = 'FinalProject';
 
