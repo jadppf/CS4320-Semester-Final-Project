@@ -1,38 +1,7 @@
-<?php 
-#Start Session
-session_start();
-#Database Connection:
-include('config/connection.php');
-
-if($_POST) {
-	$query="SELECT * FROM user_info WHERE AccountEmail='$_POST[email]' AND Hashword = '$_POST[password]'";
-	//$query="SELECT * FROM users WHERE email='$_POST[email]' AND password = SHA1('$_POST[password]')";
-	$result=mysqli_query($dbc, $query);
-
-	if(mysqli_num_rows($result) == 1) {
-		$data=mysqli_fetch_assoc($result);
-		if($data['isActive'] == 1) {
-			$_SESSION['username'] = $_POST['email'];
-			if($data['Category'] == 'admin' ) {
-				$_SESSION['category'] = 'admin';
-				header('Location:admin/index.php');
-			} else {
-				$_SESSION['category'] = 'other';
-				header('Location: index.php');
-			}
-		}		
-	}
-}
-?>
-							
-
 <!DOCTYPE html>
-<html>
-	<head>
-		<title>Login</title>
-		<meta name="viewport" content="width=device-width,initial-scale=1.0">
-		<?php include('config/css.php'); ?>
-		<?php include('config/js.php'); ?>		
+<html lang="en">
+<head>
+
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
   <title>Software Engineering</title>
@@ -78,23 +47,16 @@ if($_POST) {
     <div class="white z-depth-1 container" style='padding: 1% 1% 1% 1%;'>
       <br><br>
       <div class="row">
-      <?php
-								if($_POST) {
-									echo $_POST['email'];
-									echo '<br>';
-									echo $_POST['password'];
-								}
-							?>
       		<div class="col s4">
       			<h3>User Login</h3>
       		</div>
 		  <div class="input-field col s12">
-			  <input id="email" type="text" class="validate">
-			  <label for="email" name="email">Username</label>
+			  <input id="search" type="text" class="validate">
+			  <label for="search">Username</label>
           </div>
           <div class="input-field col s12">
-          		<input id="password" type="text" class="validate">
-			  <label for="password" type="password" name="password">Password</label>
+          		<input id="search" type="text" class="validate">
+			  <label for="search">Password</label>
 		</div>
 		<div class="col s4">
 			<a class="waves-effect waves-light btn">Login</a>
