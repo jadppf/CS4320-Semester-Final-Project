@@ -11,9 +11,9 @@
   <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 </head>
-<!-- 
+<!--
 <style>
-	
+
    /* label focus color */
    .input-field input[type=text]:focus + label {
      color: #F0F000;
@@ -34,7 +34,9 @@
     <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Software Engineering</a>
       <ul class="right hide-on-med-and-down">
         <li><a href="#">Git Hub</a></li>
-        <li><a href="#">Logout</a></li>
+				<li><a href="login.php">login</a></li>
+				<li><a href="addDataset.php">addDataset</a></li>
+				<li><a href="contribute.php">contribute</a></li>
 <!--         <li><input id="search"><i class="material-icons">search</i></li> -->
       </ul>
 
@@ -52,36 +54,30 @@
 		  	<i class="material-icons prefix">search</i>
 			  <input id="search" type="text" class="validate">
 			  <label for="search">Search</label>
-			  
+
 			  <table class="highlight">
         <thead>
           <tr>
-              <th style='width:62%' data-field="data">Data</th>
+              <th style='width:65%' data-field="data">Data</th>
               <th style='width:10%' data-field="date">Date</th>
-              <th style='width:28%' data-field="contrib"></th>
+              <th style='width:15%' data-field="contrib"></th>
+              <th style="width:10%" data-field="download"></th>
           </tr>
         </thead>
 
         <tbody style='padding: 50px 30px 50px 80px;'>
-          <tr>
-            <td style='margin-left:2px'><b>Alvin  </b><p>description</p></td>
-            <td>8/11/2015</td>
-            <td><a class="waves-effect waves-light btn">Contribute</a>
-              <a class="btn-floating btn-large waves-effect waves-light teal lighten-2"><i class="material-icons">play_for_work</i></a>
-              </td>
-          </tr>
-          <tr>
-            <td><b>Alan</b> <p>description</p></td>
-            <td>9/17/2015</td>
-            <td><a class="waves-effect waves-light btn">Contribute</a>
-              <a class="btn-floating btn-large waves-effect waves-light teal lighten-2"><i class="material-icons">play_for_work</i></a></td>
-          </tr>
-          <tr>
-            <td><b>Jonathan</b> <p>description</p></td>
-            <td>10/12/2015</td>
-            <td><a class="waves-effect waves-light btn">Contribute</a>
-              <a class="btn-floating btn-large waves-effect waves-light teal lighten-2"><i class="material-icons">play_for_work</i></a></td>
-          </tr>
+        <?php
+          for ($i=0; $i < 4; $i++) {
+            echo "<tr>";
+            echo "<td style='margin-left:2px'><b>samplename".$i."</b><p>description</p></td>";
+            echo "<td>sampledate".$i."</td>";
+            echo "<td>
+                    <a class='waves-effect waves-light btn' href='contribute.php'>Contribute</a>
+                  </td>";
+            echo "<td>  <form method='post' action=''><input type='submit' name='download' value='download'></form></td>";
+            echo "</tr>";
+          }
+          ?>
         </tbody>
       </table>
           </div>
@@ -89,9 +85,9 @@
       <div class="row center">
       </div>
       <br><br>
-      
+
 	<div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
-    <a class="btn-floating btn-large yellow accent-4">
+    <a class="btn-floating btn-large yellow accent-4" href="addDataset.php">
       <i class="large material-icons">add</i>
     </a>
   </div>
@@ -128,7 +124,11 @@
       </div>
     </div>
   </footer>
-
+  <?php
+    if (isset($_POST['download'])) {
+      echo "<script type='text/javascript'>alert('download manifest')</script>";
+    }
+  ?>
 
   <!--  Scripts-->
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
