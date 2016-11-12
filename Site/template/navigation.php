@@ -11,4 +11,4 @@
 			</ul>				
 		</div>
 	</div> 
-</nav><!-- end nav-->
+</nav><!-- END nav-->
